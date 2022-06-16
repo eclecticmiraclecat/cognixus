@@ -17,6 +17,17 @@ docker login --username=kacangcian
 docker push kacangcian/node-cognixus:1.0
 ```
 
+# create SWAP
+```
+sudo dd if=/dev/zero of=/swapfile bs=16M count=32
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon -s
+sudo vi /etc/fstab
+/swapfile swap swap defaults 0 0
+```
+
 # minikube
 - minikube on 1 cpu node
 ```
