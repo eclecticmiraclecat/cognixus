@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: node-replica-set
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-cognixus
+        image: kacangcian/node-cognixus:1.0
+        env:
+        - name: PORT
+          value: "5000"
+        ports:
+        - containerPort: 5000
