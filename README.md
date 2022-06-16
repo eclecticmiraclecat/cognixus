@@ -65,3 +65,16 @@ kubectl get pod ingress-nginx-controller-cc8496874-pb69l -n ingress-nginx --temp
 
 kubectl port-forward --address 0.0.0.0 ingress-nginx-controller-cc8496874-pb69l -n ingress-nginx 5000:80
 ```
+
+# docker swarm
+```
+docker swarm init
+
+docker service create --replicas 2 --name node-service -p 5000:5000 -e PORT=5000 kacangcian/node-cognixus:1.0
+
+docker service ls
+docker service ps node-service
+
+docker service update --replicas 5 node-service
+```
+
