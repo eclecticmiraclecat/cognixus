@@ -40,3 +40,17 @@ kubectl apply -f node-cognixus/node-replica-set.yml
 kubectl apply -f node-cognixus/node-service.yml
 kubectl apply -f node-cognixus/node-ingress.yml
 ```
+
+# exposing minikube ingress
+```
+kubectl get pods -n ingress-nginx
+NAME                                       READY   STATUS      RESTARTS       AGE
+ingress-nginx-admission-create-48g9k       0/1     Completed   0              5h29m
+ingress-nginx-admission-patch-6hnww        0/1     Completed   1              5h29m
+ingress-nginx-controller-cc8496874-pb69l   1/1     Running     5 (119m ago)   5h29m
+
+kubectl get pod ingress-nginx-controller-cc8496874-pb69l -n ingress-nginx --template='{{(index (index .spec.containers 0).ports 0).containerPort}}{{"\n"}}'
+80
+
+kubectl port-forward --address 0.0.0.0 ingress-nginx-controller-cc8496874-pb69l -n ingress-nginx 5000:80
+```
