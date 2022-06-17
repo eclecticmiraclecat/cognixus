@@ -76,5 +76,10 @@ docker service ls
 docker service ps node-service
 
 docker service update --replicas 5 node-service
+
+docker stack deploy -c node-cognixus.yml node-service
+
+docker stack ls
+docker stack services node-service
 ```
 
