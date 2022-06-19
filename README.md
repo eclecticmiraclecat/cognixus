@@ -9,6 +9,11 @@ sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+# gitea
+```
+docker-compose up -d
+docker-compose ps
+```
 
 # Build
 ```
